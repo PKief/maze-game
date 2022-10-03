@@ -1,11 +1,16 @@
-import { Position } from '../types';
+import { Algorithm, Position } from '../types';
 import { Cell } from './cell';
 import { shuffleArray } from './utils';
 
 export class Maze {
   cells: Cell[] = [];
 
-  constructor(mazeSize: Position) {
+  private readonly algorithms = {
+    recursiveBacktracking: this.recursiveBacktracking.bind(this),
+    huntAndKill: this.huntAndKill.bind(this),
+  };
+
+  constructor(mazeSize: Position, algorithm: Algorithm) {
     for (let r = 0; r < mazeSize[0]; r++) {
       for (let c = 0; c < mazeSize[1]; c++) {
         const cell = new Cell([r, c], mazeSize);
@@ -13,7 +18,7 @@ export class Maze {
       }
     }
 
-    this.recursiveBacktracking();
+    this.algorithms[algorithm]();
   }
 
   private recursiveBacktracking() {

@@ -1,8 +1,16 @@
 <div class="container">
   <h1>Maze</h1>
   <div class="config">
-    <input type="number" [(ngModel)]="config.rows" />
-    <input type="number" [(ngModel)]="config.columns" />
+    <input type="number" placeholder="Amount rows" [(ngModel)]="config.rows" />
+    <input
+      type="number"
+      placeholder="Amount columns"
+      [(ngModel)]="config.columns"
+    />
+    <select name="algorithms" [(ngModel)]="config.algorithm">
+      <option value="recursiveBacktracking">Recursive Backtracking</option>
+      <option value="huntAndKill">Hunt & Kill</option>
+    </select>
     <button (click)="generateMaze()">Generate</button>
   </div>
 

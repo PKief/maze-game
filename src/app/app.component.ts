@@ -37,7 +37,10 @@ export class AppComponent implements OnInit {
   }
 
   generateMaze() {
-    this.maze = new Maze([this.config.columns, this.config.rows]);
+    this.maze = new Maze(
+      [this.config.columns, this.config.rows],
+      this.config.algorithm
+    );
     this.drawMaze();
   }
 
