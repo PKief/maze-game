@@ -1,11 +1,11 @@
+import { Position } from '../types';
 import { Cell } from './cell';
-import { Position } from './position';
 import { shuffleArray } from './utils';
 
 export class Maze {
   cells: Cell[] = [];
 
-  constructor(private mazeSize: Position) {
+  constructor(mazeSize: Position) {
     for (let r = 0; r < mazeSize[0]; r++) {
       for (let c = 0; c < mazeSize[1]; c++) {
         const cell = new Cell([r, c], mazeSize);
@@ -13,7 +13,7 @@ export class Maze {
       }
     }
 
-    this.huntAndKill();
+    this.recursiveBacktracking();
   }
 
   private recursiveBacktracking() {

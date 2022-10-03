@@ -1,5 +1,4 @@
-import { Position } from './position';
-import { Walls } from './walls';
+import { Position, Walls } from '../types';
 
 export class Cell {
   visited: boolean;

@@ -1,5 +1,12 @@
-<input type="number" [(ngModel)]="config.rows" />
-<input type="number" [(ngModel)]="config.columns" />
+<div class="container">
+  <h1>Maze</h1>
+  <div class="config">
+    <input type="number" [(ngModel)]="config.rows" />
+    <input type="number" [(ngModel)]="config.columns" />
+    <button (click)="generateMaze()">Generate</button>
+  </div>
 
-<button (click)="generateMaze()">Generate</button>
-<canvas #canvas></canvas>
+  <div>
+    <canvas #canvas></canvas>
+  </div>
+</div>

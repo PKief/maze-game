@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Maze } from './logic/maze';
+import { Config } from './types/config';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +14,11 @@ export class AppComponent implements OnInit {
   private maze: Maze | undefined;
   private ctx!: CanvasRenderingContext2D;
 
-  config = {
+  config: Config = {
     rows: 15,
     columns: 15,
     cellSize: 25,
+    algorithm: 'huntAndKill',
   };
 
   ngOnInit() {
