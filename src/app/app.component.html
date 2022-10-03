@@ -1,1 +1,5 @@
+<input type="number" [(ngModel)]="config.rows" />
+<input type="number" [(ngModel)]="config.columns" />
+
+<button (click)="generateMaze()">Generate</button>
 <canvas #canvas></canvas>

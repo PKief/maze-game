@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Maze } from './logic/maze';
-import { shuffleArray } from './logic/utils';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +9,15 @@ import { shuffleArray } from './logic/utils';
 export class AppComponent implements OnInit {
   @ViewChild('canvas', { static: true })
   canvas: ElementRef<HTMLCanvasElement> | undefined;
-  readonly maze: Maze;
 
+  private maze: Maze | undefined;
   private ctx!: CanvasRenderingContext2D;
 
-  constructor() {
-    this.maze = new Maze([15, 15]);
-  }
+  config = {
+    rows: 15,
+    columns: 15,
+    cellSize: 25,
+  };
 
   ngOnInit() {
     if (!this.canvas) {
@@ -28,21 +29,29 @@ export class AppComponent implements OnInit {
       throw new Error('Could not find rendering context');
     }
 
-    this.canvas.nativeElement.width = 500;
-    this.canvas.nativeElement.height = 500;
     this.ctx = context;
+
+    this.generateMaze();
+  }
+
+  generateMaze() {
+    this.maze = new Maze([this.config.columns, this.config.rows]);
     this.drawMaze();
   }
 
   private drawMaze() {
-    const cellSize = 25;
+    this.canvas!.nativeElement.width =
+      this.config.columns * this.config.cellSize;
+    this.canvas!.nativeElement.height = this.config.rows * this.config.cellSize;
+
     this.ctx.fillStyle = 'white';
     this.ctx.strokeStyle = 'black';
     this.ctx.lineJoin = 'round';
     this.ctx.lineCap = 'round';
     this.ctx.lineWidth = 2;
 
-    this.maze.cells.forEach((cell) => {
+    this.maze!.cells.forEach((cell) => {
+      const cellSize = this.config.cellSize;
       this.ctx.beginPath();
       this.ctx.fillRect(
         cell.position[0] * cellSize,
