@@ -1,27 +1,25 @@
 # MazeGame
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4.
+A project to demonstrate how to generate mazes with two different algorithms:[ Recursive Backtracking](https://weblog.jamisbuck.org/2010/12/27/maze-generation-recursive-backtracking) and [Hunt & Kill](https://weblog.jamisbuck.org/2011/1/24/maze-generation-hunt-and-kill-algorithm). The app is implemented in Angular and TypeScript, the rendering is achieved with an HTML canvas element.
 
-## Development server
+## Preview
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+<img src="./src/assets/preview.png" width="400px" alt="Preview image of the maze game app">
 
-## Code scaffolding
+## Build requirements
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+It's necessary to install [Node.js](https://nodejs.org/en/) to run the following build commands:
 
-## Build
+### Install dependencies
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+npm install
+```
 
-## Running unit tests
+### Run live server
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+npm start
+```
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The app will be available under this address in the web browser: http://localhost:4200
